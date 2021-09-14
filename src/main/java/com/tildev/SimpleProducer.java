@@ -13,7 +13,9 @@ import java.util.Properties;
 public class SimpleProducer {
     private final static Logger logger = LoggerFactory.getLogger(SimpleProducer.class);
 
+    // 생성한 레코드를 전송하기 위해 전송하고자 하는 토픽을 알고 있어야 함. 토픽 이름은 Producer Record 인스턴스를 생성할 때 사용.
     private final static String TOPIC_NAME = "test";
+    // 전송하고자 하는 카프카 클러스터 서버의 host, IP 지정
     private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
 
     public static void main(String[] args) {
@@ -25,6 +27,7 @@ public class SimpleProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(configs);
 
         String messageValue = "testMessage";
+        // 카프카 브로커로 데이터를 보내기 위해 ProducerRecord를 생성.
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageValue);
 
         producer.send(record);
