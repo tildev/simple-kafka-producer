@@ -27,9 +27,10 @@ public class SimpleProducer {
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(configs);
 
         String messageValue = "testMessage";
-        // 카프카 브로커로 데이터를 보내기 위해 ProducerRecord를 생성.
+        // 카프카 브로커로 데이터를 보내기 위해 ProducerRecord 를 생성.
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageValue);
 
+        // 생성한 ProducerRecord 를 전송하기 위해 record 를 파라미터로 가지는 send() 메서드 호출
         producer.send(record);
         logger.info("{}", record);
         producer.flush();
