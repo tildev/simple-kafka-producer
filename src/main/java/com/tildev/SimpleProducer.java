@@ -24,6 +24,8 @@ public class SimpleProducer {
         configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
 
+        // properties 를 KafkaProducer의 생성 파라미터로 추가하여 인스턴스를 생성.
+        // producer 인스턴스는 ProducerRecord를 전송할때 사용.
         KafkaProducer<String, String> producer = new KafkaProducer<String, String>(configs);
 
         String messageValue = "testMessage";
